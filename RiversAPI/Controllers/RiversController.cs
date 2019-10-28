@@ -30,7 +30,7 @@ namespace RiversAPI.Controllers
 
             if (state != null)
             {
-                query = query.Where(entry => entry.States.Contains(state));
+                query = query.Where(entry => entry.Counties.Contains(state));
             }
 
             if (mouth != null)

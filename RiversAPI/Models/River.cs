@@ -10,7 +10,8 @@ namespace RiversAPI.Models
         public string Source { get; set; }
         public string Mouth { get; set; }
         public string Flow { get; set; }
-        public string States { get; set; }
+        public string Counties { get; set; }
         public string Tributaries { get; set; }
+        public string ImageURL { get; set; }
     }
 }
