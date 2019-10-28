@@ -19,9 +19,16 @@ namespace RiversAPI.Controllers
 
         // GET api/rivers
         [HttpGet]
-        public ActionResult<IEnumerable<River>> Get()
+        public ActionResult<IEnumerable<River>> Get(string name)
         {
-            return _db.Rivers.ToList();
+            var query = _db.Rivers.AsQueryable();
+
+            if (name != null)
+            {
+                query = query.Where(entry => entry.Name.Contains(name));
+            }
+
+            return query.ToList();
         }
 
         // POST api/rivers
