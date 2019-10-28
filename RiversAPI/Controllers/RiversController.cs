@@ -19,7 +19,7 @@ namespace RiversAPI.Controllers
 
         // GET api/rivers
         [HttpGet]
-        public ActionResult<IEnumerable<River>> Get(string name)
+        public ActionResult<IEnumerable<River>> Get(string name , string state, string mouth, string source, string tributary )
         {
             var query = _db.Rivers.AsQueryable();
 
@@ -27,6 +27,28 @@ namespace RiversAPI.Controllers
             {
                 query = query.Where(entry => entry.Name.Contains(name));
             }
+
+            if (state != null)
+            {
+                query = query.Where(entry => entry.States.Contains(state));
+            }
+
+            if (mouth != null)
+            {
+                query = query.Where(entry => entry.Mouth.Contains(mouth));
+            }
+
+            if (source != null)
+            {
+                query = query.Where(entry => entry.Source.Contains(source));
+            }
+
+            if (tributary != null)
+            {
+                query = query.Where(entry => entry.Tributaries.Contains(tributary));
+            }
+
+
 
             return query.ToList();
         }
